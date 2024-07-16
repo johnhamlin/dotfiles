@@ -1,0 +1,6 @@
+[submodule ".config/tmux/plugins/catppuccin-tmux"]
+	path = .config/tmux/plugins/catppuccin-tmux
+	url = https://git::@github.com/dreamsofcode-io/catppuccin-tmux
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/johnhamlin/kickstart.nvim.git
