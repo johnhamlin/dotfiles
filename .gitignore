@@ -1,0 +1,27 @@
+# Ignore everything
+*
+
+# Except dotfiles (unignore all files starting with a .)
+# !.*
+
+# But you still need to ignore the dot-directories you don't want
+# For example, ignore everything in .cache and .local
+.cache/
+.local/
+.Trash/
+.vscode/
+
+# Optional: Allow specific dotfiles
+!.zshrc
+!.vimrc
+!.gitignore
+!.config/*
+
+# Optional: If you want to include specific files from .config/
+# Uncomment and adjust as needed
+# !.config/nvim/
+# !.config/i3/
+
+# Ignore everything inside .config, unless whitelisted
+# .config/*
+# !.config/nvim/
