@@ -1,27 +1,9 @@
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Clipboard
-set clipboard+=unnamed
-
-" Do incremental searching.
-set incsearch
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
-nmap gh <Action>(ShowHoverInfo)
-
-# Plugins
-set sneak
-" Plug 'tpope/vim-surround'
-" Plug 'easymotion/vim-easymotion'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
 " vim settings
 set scrolloff=5
 set history=1000
+set clipboard^=unnamedplus,unnamed
+
+set timeoutlen=1000
 
 " status bar
 set showmode
@@ -29,6 +11,9 @@ set showmode
 " leader
 map <space> <nop>
 let mapleader="\<space>"
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
 
 " find and replace
 set hlsearch
@@ -53,6 +38,8 @@ map K {
 " better escape
 imap jk <Esc>
 
+nmap gh <Action>(ShowHoverInfo)
+
 " location
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
@@ -64,7 +51,7 @@ nmap <leader>xo <Action>(CloseAllEditorsButActive)
 nmap <leader>xp <Action>(CloseAllUnpinnedEditors)
 
 " window
-nmap <C-Tab> <Action>(PreviousTab)
+nmap <S-Tab> <Action>(PreviousTab)
 nmap <Tab> <Action>(NextTab)
 nmap <leader>p <Action>(PinActiveEditorTab)
 
@@ -124,7 +111,7 @@ nmap <leader>sf <Action>(ShowFilePath)
 nmap <leader>si <Action>(SelectIn)
 nmap <leader>fp <Action>(FindInPath)
 nmap <leader>rp <Action>(ReplaceInPath)
-" nmap <leader>sw <Action>($SearchWeb)
+nmap <leader>sw <Action>($SearchWeb)
 
 " tag
 nmap <leader>fu <Action>(FindUsages)
@@ -146,7 +133,7 @@ nmap <leader>fc <Action>(ReformatCode)
 nmap <leader>ic <Action>(InspectCode)
 nmap <leader>so <Action>(SelectAllOccurrences)
 nmap <leader>gc <Action>(Generate)
-nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gt <Action>(GoToTest)
 
 " run
 nmap <leader>rc <Action>(ContextRun)
@@ -170,7 +157,6 @@ nmap <leader>rn <Action>(RenameElement)
 nmap <leader>re <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>uw <Action>(Unwrap)
 nmap <leader>sw <Action>(SurroundWith)
-vmap <leader>sw <Action>(SurroundWith)
 nmap <leader>sd <Action>(SafeDelete)
 nmap <leader>oi <Action>(OptimizeImports)
 
@@ -185,7 +171,7 @@ nmap za <Action>(CollapseAllRegions)
 nmap zA <Action>(ExpandAllRegions)
 
 " zen
-nmap <leader>z <Action>(ToggleZenMode)
+" nmap <leader>z <Action>(ToggleZenMode)
 
 " []
 nmap [b <Action>(PreviousTab)
@@ -206,8 +192,9 @@ nmap <leader>a <Action>(GotoAction)
 nmap ga <Action>(GotoAction)
 nmap gc <Action>(GotoClass)
 nmap gf <Action>(GotoFile)
+nmap <leader>fo <Action>(GotoFile)
 nmap gs <Action>(GotoSymbol)
-nmap gt <Action>(GotoTest)
+nmap gt <Action>(GoToTest)
 nmap gT <Action>(TextSearchAction)
 nmap go <Action>(GotoSuperMethod)
 nmap gd <Action>(GotoDeclaration)
@@ -249,7 +236,8 @@ set textobj-entire
 set argtextobj
 
 " jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
-" set easymotion
+set easymotion
+set sneak
 
 " highlight yank (bundle plugin)
 set highlightedyank
@@ -263,10 +251,10 @@ nmap \\ti <Action>($InclusiveTranslateAction)
 nmap \\te <Action>($ExclusiveTranslateAction)
 
 " string manipulate (required idea plugin: String Manipulation)
-nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
+ nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
 
 " code screenshot (required idea plugin: Code Screenshots)
-nmap <leader>cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
+" nmap <leader>cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
 
 " surround (bundle plugin)
 " usage: https://github.com/tpope/vim-surround
@@ -281,14 +269,24 @@ set NERDTree
 " Focus Project tool window
 nmap <leader>ft :NERDTree<CR>
 
-
 " replace with register (bundle plugin)
 " usage: https://github.com/vim-scripts/ReplaceWithRegister
 set ReplaceWithRegister
+
+" Visual Multi
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" let g:VM_default_mappings = 1
+" let g:VM_maps["Add Cursor Down"]             = '<C-Down>'
+" let g:VM_maps["Add Cursor Up"]               = '<C-Up>'
+
+" set which-key
+set notimeout
 
 " continuous shift
 xnoremap < <gv
 xnoremap > >gv
 
 " alias
+
 nmap <C-a> ggVG"+y
+

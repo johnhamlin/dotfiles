@@ -138,12 +138,11 @@ source $ZSH/oh-my-zsh.sh
 # My custom bins/scripts
 export PATH=$HOME/bin:$PATH
 
-
-# Turn on thefuck
-eval $(thefuck --alias)
-
 # Fuzzyfind
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# The vim plugin will auto execute this zvm_after_init function
+function zvm_after_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
 
 # Function to compile C programs with CS50 library
 # function make50 { gcc "$1".c -o "$1" -I /usr/local/include -L /usr/local/lib -lcs50; }
@@ -265,3 +264,44 @@ alias l="eza -l --icons"
 
 #Go modules
 export PATH=$PATH:$HOME/go/bin/
+
+# Rust
+alias c="cargo"
+alias cr="cargo run"
+alias ct="cargo test"
+
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# fuzzyfind
+alias ff='find . -type f -not -path "*/\.git/*" | fzf --preview "/opt/homebrew/bin/bat --style=numbers --color=always --line-range :500 {}"'
+
+# Sudo aliases
+alias s='sudo'
+alias si='sudo -i'  # Interactive sudo shell
+alias se='sudoedit' # Safe way to edit system files
+alias sv='sudo -v'  # Extend sudo timeout
+alias sk='sudo -k'  # Kill sudo timeout
+
+# Function to run previous command with sudo
+function please() {
+    if [ -z "$1" ]; then
+        sudo $(history -p '!-1')
+    else
+        sudo "$@"
+    fi
+}
+
+# Optional: Add completion for the new alias
+if [ -n "$BASH_VERSION" ]; then
+    complete -F _sudo s
+fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/john/.lmstudio/bin"
+
+# Run a command in Ubuntu
+alias drun='docker run --rm -it -v "$(pwd):/work" -w /work -e HOME=/work -e USER="$USER" -u "$(id -u):$(id -g)" ubuntu'
+
+export VISUAL=nvim
+
+alias ai='aichat'
