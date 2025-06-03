@@ -1,0 +1,1 @@
+{"title":"Hyper-I to Caps Lock","rules":[{"description":"Map Hyper-I to Caps Lock","manipulators":[{"type":"basic","from":{"modifiers":{"mandatory":["left_gui","left_control","left_alt","left_shift"]},"key_code":"i"},"to":[{"repeat":false,"consumer_key_code":"","key_code":"caps_lock"}]}]}]}

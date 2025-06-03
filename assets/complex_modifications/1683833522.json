@@ -1,0 +1,1 @@
+{"title":"hyper-P to play/pause","rules":[{"description":"hyper-P to play/pause","manipulators":[{"type":"basic","from":{"modifiers":{"mandatory":["left_gui","left_control","left_alt","left_shift"]},"key_code":"p"},"to":[{"repeat":false,"key_code":"play_or_pause"}]}]}]}

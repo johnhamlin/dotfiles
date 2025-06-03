@@ -1,0 +1,30 @@
+{
+  "title": "Change tab to dual keys: tab and hyper.",
+  "rules": [
+    {
+      "description": "Change tab to tab when pressed alone, hyper when held down",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": ["left_command", "left_control", "left_option"]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
