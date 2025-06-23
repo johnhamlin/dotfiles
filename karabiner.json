@@ -1049,6 +1049,22 @@
                 },
                 "rules": [
                     {
+                        "description": "Tab → Tab when tapped, Hyper when *held*",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "tab" },
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_option", "left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change left_control to hyper when held down",
                         "enabled": false,
                         "manipulators": [
@@ -1069,6 +1085,7 @@
                     },
                     {
                         "description": "Change tab to tab when pressed alone, hyper when held down",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -1238,6 +1255,7 @@
                 }
             ],
             "name": "HHKB",
+            "selected": true,
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
@@ -1448,7 +1466,6 @@
                 }
             ],
             "name": "HHKB-Internal-Off",
-            "selected": true,
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
