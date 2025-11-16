@@ -21,6 +21,7 @@ return {
     { "<localleader>ld", "<cmd>Leet daily<cr>", desc = "Daily Problem" },
     { "<localleader>lr", "<cmd>Leet random<cr>", desc = "Random Problem" },
     { "<localleader>la", "<cmd>Leet tabs<cr>", desc = "List Open Problems (Tabs)" },
+    { "<localleader>lo", "<cmd>Leet open<cr>", desc = "Open Problem on Web" },
 
     -- In-Buffer Actions
     { "<localleader>lt", "<cmd>Leet test<cr>", desc = "Run/Test Solution" },
