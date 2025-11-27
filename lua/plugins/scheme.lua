@@ -1,5 +1,5 @@
 return {
-  -- Ensure scheme support
+  -- Treesitter for Scheme
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -7,7 +7,7 @@ return {
     end,
   },
 
-  -- Rainbow brackets ONLY for Scheme/Racket
+  -- Rainbow parens for lisps
   {
     "HiPhish/rainbow-delimiters.nvim",
     ft = { "scheme", "racket", "lisp", "clojure" },
@@ -22,37 +22,58 @@ return {
     end,
   },
 
-  -- REPL integration via Conjure
+  -- Conjure + Chez
   {
     "Olical/conjure",
     ft = { "scheme", "racket" },
     init = function()
       vim.g["conjure#client#scheme#stdio#command"] = "chez"
       vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "> $?"
+      -- Log behaviour
+      -- vim.g["conjure#log#hud#enabled"] = false -- use split log, not HUD
+      -- vim.g["conjure#log#wrap"] = true -- nicer wrapping
+      -- vim.g["conjure#log#botright"] = true -- put log at bottom / right
+      -- vim.g["conjure#log#on_eval"] = true -- ⬅ auto-show log on eval
     end,
   },
 
-  -- Autopairs: disable ' pairing in lisps only
+  -- Autopairs tweak: no ' pairing in lisps
   {
     "windwp/nvim-autopairs",
-    -- extend LazyVim's existing config
     config = function(_, opts)
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
       local cond = require("nvim-autopairs.conds")
 
-      -- keep LazyVim defaults
       npairs.setup(opts)
 
-      -- remove the built-in single-quote rule
       pcall(function()
         npairs.remove_rule("'")
       end)
 
-      -- re-add a single-quote rule, but NOT for lispy filetypes
       npairs.add_rules({
         Rule("'", "'"):with_pair(cond.not_filetypes({ "scheme", "racket", "lisp", "clojure" })),
       })
     end,
+  },
+
+  -- Parinfer for lisps
+  {
+    "gpanders/nvim-parinfer",
+    ft = { "scheme", "racket", "lisp", "clojure" },
+  },
+
+  -- S-expression editing
+  {
+    "guns/vim-sexp",
+    dependencies = {
+      "tpope/vim-repeat",
+      "tpope/vim-surround",
+    },
+    ft = { "scheme", "racket", "lisp", "clojure" },
+  },
+  {
+    "tpope/vim-sexp-mappings-for-regular-people",
+    ft = { "scheme", "racket", "lisp", "clojure" },
   },
 }
