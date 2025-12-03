@@ -36,8 +36,6 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # --- Rust / Go / DBs ---
-export PATH="$PATH:$HOME/go/bin"
-
 {{- if eq .chezmoi.os "darwin" -}}
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 {{- else -}}
