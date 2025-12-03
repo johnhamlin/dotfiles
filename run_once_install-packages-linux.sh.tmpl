@@ -69,6 +69,15 @@ else
   echo "[chezmoi] lazygit already installed; skipping."
 fi
 
+# --- Install Powerlevel10k theme if missing ---
+if [ ! -d "$HOME/.local/share/powerlevel10k" ]; then
+  echo "[chezmoi] powerlevel10k theme not found; installing into \$HOME/.local/share/powerlevel10k…"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+    "$HOME/.local/share/powerlevel10k"
+else
+  echo "[chezmoi] powerlevel10k theme already present at \$HOME/.local/share/powerlevel10k, skipping."
+fi
+
 # Done
 echo "[chezmoi] Linux bootstrap complete."
 
