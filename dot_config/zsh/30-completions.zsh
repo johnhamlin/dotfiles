@@ -1,6 +1,6 @@
-# Extra completions from Homebrew zsh-completions
-if command -v brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
+# Extra completions for zsh
+if [ -n "${ZSH_CUSTOM:-}" ] && [ -d "$ZSH_CUSTOM/plugins/zsh-completions/src" ]; then
+  fpath=("$ZSH_CUSTOM/plugins/zsh-completions/src" $fpath)
 fi
 
 autoload -Uz compinit

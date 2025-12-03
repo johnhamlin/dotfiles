@@ -24,6 +24,7 @@ ensure_omz_plugin() {
 ensure_omz_plugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 ensure_omz_plugin zsh-autosuggestions      https://github.com/zsh-users/zsh-autosuggestions.git
 ensure_omz_plugin zsh-vi-mode              https://github.com/jeffreytse/zsh-vi-mode.git
+ensure_omz_plugin zsh-completions          https://github.com/zsh-users/zsh-completions.git
 
 # zvm_after_init: zsh-vi-mode calls this if defined
 zvm_after_init() {
