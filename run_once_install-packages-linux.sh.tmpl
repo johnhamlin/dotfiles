@@ -26,7 +26,15 @@ if command -v apt-get >/dev/null 2>&1; then
     eza
   )
 
-  sudo add-apt-repository ppa:ppa-verse/neovim
+  # --- Ensure Neovim PPA is added (for newer nvim) ---
+  if ! grep -R "ppa-verse/neovim" /etc/apt/sources.list.d /etc/apt/sources.list >/dev/null 2>&1; then
+    echo "[chezmoi] Adding Neovim PPA: ppa:ppa-verse/neovim"
+    sudo add-apt-repository -y ppa:ppa-verse/neovim
+  else
+    echo "[chezmoi] Neovim PPA already present, skipping."
+  fi
+
+  # --- Update and Install ---
   sudo apt-get update
 
   for pkg in "${PKGS[@]}"; do
