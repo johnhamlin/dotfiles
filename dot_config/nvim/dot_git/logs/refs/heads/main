@@ -1,9 +1,0 @@
-0000000000000000000000000000000000000000 0e78fe4b008df89e15aea2c3a3536feb4ee56e77 John Hamlin <johnhamlin@gmail.com> 1761856637 -0400	commit (initial): first commit
-0e78fe4b008df89e15aea2c3a3536feb4ee56e77 0e78fe4b008df89e15aea2c3a3536feb4ee56e77 John Hamlin <johnhamlin@gmail.com> 1761856637 -0400	Branch: renamed refs/heads/main to refs/heads/main
-0e78fe4b008df89e15aea2c3a3536feb4ee56e77 a022adb201f3b3c3d4776939429e0ab39aa069ba John Hamlin <johnhamlin@gmail.com> 1761856686 -0400	commit: Initial commit
-a022adb201f3b3c3d4776939429e0ab39aa069ba 7b78cf5d9fe755c47c476e575c1ce2ed8fdec5f8 John Hamlin <johnhamlin@gmail.com> 1762370186 -0500	commit: Add leetcode, scheme, vimwiki, fixes, etc
-7b78cf5d9fe755c47c476e575c1ce2ed8fdec5f8 9d444a1a902ac7ec5ea52dc14b6279ce6e0cb9de John Hamlin <johnhamlin@gmail.com> 1763318363 -0500	commit: Add leetcode key
-9d444a1a902ac7ec5ea52dc14b6279ce6e0cb9de 864a52e5318a78a9c26c4c41d3784ddd400e362d John Hamlin <johnhamlin@gmail.com> 1764044040 -0500	pull --no-edit: Fast-forward
-864a52e5318a78a9c26c4c41d3784ddd400e362d 234856b550b48233d7acc43d5152631b5885d685 John Hamlin <johnhamlin@gmail.com> 1764044082 -0500	commit: Fix vimwiki hijacking mds, more
-234856b550b48233d7acc43d5152631b5885d685 39ef9b7c37bac45d7a829f661fc44d7750a85d96 John Hamlin <johnhamlin@gmail.com> 1764209936 -0500	commit: Update scheme, kitty support, expand lualine
-39ef9b7c37bac45d7a829f661fc44d7750a85d96 42d8d9ed9d4a7bd3b180c6b2e67f586eafc2680d John Hamlin <johnhamlin@gmail.com> 1764272651 -0500	commit: Add copilot toggle, tweak scheme setup
