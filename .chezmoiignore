@@ -1,2 +1,6 @@
 **/.git/
 **/.git/**
+
+# Don’t track Karabiner automatic backups
+.config/karabiner/automatic_backups/
+.config/karabiner/automatic_backups/**
