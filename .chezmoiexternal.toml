@@ -1,0 +1,5 @@
+# LazyVim keymappings for JetBrains IDEs
+[".config/ideavim/lazy-idea/.ideavimrc"]
+type = "file"
+url = "https://raw.githubusercontent.com/cufarvid/lazy-idea/refs/heads/main/.ideavimrc"
+refreshPeriod = "24h"
