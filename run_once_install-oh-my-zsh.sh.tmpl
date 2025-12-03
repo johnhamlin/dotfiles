@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Only install if it's missing
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "[chezmoi] Installing oh-my-zsh into $HOME/.oh-my-zsh…"
+  git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+else
+  echo "[chezmoi] oh-my-zsh already present at $HOME/.oh-my-zsh, skipping."
+fi

@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# run_once_install-packages-linux.sh.tmpl
+set -euo pipefail
+
+# Only run this on Linux hosts
+if [[ "{{ .chezmoi.os }}" != "linux" ]]; then
+  exit 0
+fi
+
+echo "[chezmoi] Linux bootstrap: checking core packages…"
+
+if command -v apt-get >/dev/null 2>&1; then
+  PKGS=(
+    git
+    zsh
+    neovim
+    tmux
+    fzf
+    ripgrep
+    fd-find
+    curl
+    build-essential
+    python3
+    python3-pip
+    bat
+  )
+
+  sudo add-apt-repository ppa:ppa-verse/neovim
+  sudo apt-get update
+
+  for pkg in "${PKGS[@]}"; do
+    if ! dpkg -s "$pkg" >/dev/null 2>&1; then
+      echo "[chezmoi] Installing: $pkg"
+      sudo apt-get install -y "$pkg"
+    else
+      echo "[chezmoi] Already installed: $pkg"
+    fi
+  done
+else
+  echo "[chezmoi] No supported package manager (apt-get) found; skipping Linux bootstrap."
+fi
+
+# --- Install lazygit if missing (official GitHub-release method) ---
+if ! command -v lazygit >/dev/null 2>&1; then
+  echo "[chezmoi] lazygit not found; installing from GitHub release…"
+
+  # Query latest version tag from GitHub API
+  LAZYGIT_VERSION="$(
+    curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" |
+      grep -Po '"tag_name": "v\K[0-9.]+' ||
+      true
+  )"
+
+  if [[ -z "${LAZYGIT_VERSION}" ]]; then
+    echo "[chezmoi] Failed to determine lazygit version from GitHub API; skipping lazygit install." >&2
+  else
+    echo "[chezmoi] Latest lazygit version: ${LAZYGIT_VERSION}"
+
+    curl -Lo lazygit.tar.gz \
+      "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
+    rm lazygit lazygit.tar.gz
+
+    echo "[chezmoi] lazygit installed to /usr/local/bin."
+  fi
+else
+  echo "[chezmoi] lazygit already installed; skipping."
+fi
+
+# Done
+echo "[chezmoi] Linux bootstrap complete."
+
+# --- Reminder: make zsh your default shell ---
+
+# If zsh isn't installed for some reason, hint how to install it
+if ! command -v zsh >/dev/null 2>&1; then
+  cat <<'EOF'
+
+[chezmoi] NOTE: zsh is not installed yet.
+Install it and make it your default shell with:
+
+  sudo apt-get update
+  sudo apt-get install zsh
+  chsh -s "$(command -v zsh)"
+
+Then log out and log back in, or restart your terminal.
+
+EOF
+else
+  # zsh is installed; check if it's the current login shell
+  current_shell_basename="$(basename "${SHELL:-}")"
+  if [[ "$current_shell_basename" != "zsh" ]]; then
+    cat <<EOF
+
+[chezmoi] NOTE: zsh is installed but is not your default shell (current: $current_shell_basename).
+
+To switch your login shell to zsh, run:
+
+  chsh -s "$(command -v zsh)"
+
+Then log out and log back in, or restart your terminal.
+
+EOF
+  else
+    echo "[chezmoi] Default shell is already zsh. 🎉"
+  fi
+fi

@@ -1,0 +1,12 @@
+# --- Powerlevel10k instant prompt (keep at top) ---
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Load all Zsh config fragments from ~/.config/zsh in sorted order
+for file in "$HOME"/.config/zsh/*.zsh; do
+  [ -r "$file" ] && source "$file"
+done
+
+# Load Powerlevel10k config (prompt details)
+[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"

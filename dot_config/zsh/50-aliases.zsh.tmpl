@@ -1,0 +1,67 @@
+# chezmoi
+alias cm="chezmoi"
+alias cme='chezmoi edit'
+alias cma='chezmoi apply'
+alias cms='chezmoi status'
+alias cmu='chezmoi update'
+
+# Dotfiles
+alias esauce='cme ~/.zshrc'
+alias sauce='source ~/.zshrc'
+
+# Homebrew
+alias bi="brew install"
+alias bic="brew install --cask"
+alias bs="brew search"
+
+# Editors & tools
+alias vim='nvim'
+alias v='vim'
+alias leet='nvim leetcode.nvim'
+
+# VS Code
+alias c="code ./"
+
+# Node / npm
+alias nr="npm run"
+alias ni="npm install --save"
+alias nrd="npm run dev"
+alias tn="npx ts-node"
+
+# Docker
+alias dk="docker"
+alias drun='docker run --rm -it -v "$(pwd):/work" -w /work -e HOME=/work -e USER="$USER" -u "$(id -u):$(id -g)" ubuntu'
+
+# Expo
+alias e="npx expo"
+alias ei="npx expo install"
+alias est="npx expo start"
+alias edoc="npx expo-doctor@latest"
+
+# Update (OS-specific)
+{{- if eq .chezmoi.os "darwin" -}}
+alias update='sudo softwareupdate -ia --verbose; brew update; brew upgrade; brew cleanup; brew doctor -v; mas upgrade'
+{{- else -}}
+# Example Linux update alias – customize for your distro:
+alias update="sudo apt update && sudo apt upgrade"
+{{- end }}
+
+# Misc
+alias cl="clear"
+alias ai="aichat"
+alias gg='lazygit'
+
+# eza
+alias eza='eza --icons --git'
+alias l='eza -l'
+alias ll='eza -l'
+alias la='eza -la'
+alias lt='eza --tree'
+alias ls='/bin/ls'
+
+# Sudo helpers
+alias s='sudo'
+alias si='sudo -i'
+alias se='sudo -e'
+alias sv='sudo -v'
+alias sk='sudo -k'

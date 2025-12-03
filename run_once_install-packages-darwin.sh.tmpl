@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "{{ .chezmoi.os }}" != "darwin" ]]; then
+  exit 0
+fi
+
+echo "[chezmoi] macOS bootstrap: checking Homebrew & core packages…"
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "[chezmoi] Homebrew not found. Installing Homebrew…"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew update
+
+FORMULAS=(
+  git
+  zsh
+  neovim
+  tmux
+  eza
+  fzf
+  ripgrep
+  fd
+  lazygit
+  zoxide
+  direnv
+  pyenv
+  rbenv
+  jenv
+  pnpm
+  bat
+)
+
+for pkg in "${FORMULAS[@]}"; do
+  if ! brew list --formula "$pkg" >/dev/null 2>&1; then
+    echo "[chezmoi] Installing: $pkg"
+    brew install "$pkg"
+  fi
+done
+
+CASKS=(
+  iterm2
+  jetbrains-toolbox
+  karabiner-elements
+  kitty
+  docker
+)
+
+for c in "${CASKS[@]}"; do
+  if ! brew list --cask "$c" >/dev/null 2>&1; then
+    echo "[chezmoi] Installing cask: $c"
+    brew install --cask "$c"
+  fi
+done
+
+echo "[chezmoi] macOS bootstrap complete."
