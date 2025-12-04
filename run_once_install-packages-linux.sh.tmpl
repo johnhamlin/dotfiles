@@ -87,7 +87,7 @@ else
   echo "[chezmoi] powerlevel10k theme already present at \$HOME/.local/share/powerlevel10k, skipping."
 fi
 
-{{ template "atuin_setup" . }}
+{{ template "snippets/atuin-setup.sh" . }}
 
 # Done
 echo "[chezmoi] Linux bootstrap complete."

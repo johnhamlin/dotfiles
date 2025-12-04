@@ -41,7 +41,7 @@ for pkg in "${FORMULAS[@]}"; do
   fi
 done
 
-{{ template "atuin_setup" . }}
+{{ template "snippets/atuin-setup.sh" . }}
 
 CASKS=(
   iterm2

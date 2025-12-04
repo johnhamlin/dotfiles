@@ -1,4 +1,3 @@
-{{ define "atuin_setup" }}
 # --- Install atuin if missing ---
 if [ ! -d "$HOME/.atuin" ] && ! command -v atuin >/dev/null 2>&1; then
   echo "[chezmoi] Installing Atuin..."
@@ -29,4 +28,3 @@ After that, your zsh config will automatically load Atuin for you.
 
 EOF
 fi
-{{ end }}
