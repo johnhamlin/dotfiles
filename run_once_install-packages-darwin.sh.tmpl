@@ -31,6 +31,7 @@ FORMULAS=(
   jenv
   pnpm
   bat
+  # atuin
 )
 
 for pkg in "${FORMULAS[@]}"; do
@@ -39,6 +40,8 @@ for pkg in "${FORMULAS[@]}"; do
     brew install "$pkg"
   fi
 done
+
+{{ template "atuin_setup" . }}
 
 CASKS=(
   iterm2
