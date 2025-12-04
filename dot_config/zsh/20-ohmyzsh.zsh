@@ -31,8 +31,8 @@ zvm_after_init() {
   # fzf
   [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-  # Atuin
-  if [ -f "$HOME/.atuin/bin/env" ]; then
+  # Atuin (only if installed)
+  if command -v atuin >/dev/null 2>&1; then
     . "$HOME/.atuin/bin/env"
     eval "$(atuin init zsh)"
   fi
