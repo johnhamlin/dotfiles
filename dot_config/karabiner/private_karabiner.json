@@ -1258,7 +1258,6 @@
                 }
             ],
             "name": "HHKB",
-            "selected": true,
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
@@ -1485,10 +1484,17 @@
                         "is_keyboard": true,
                         "product_id": 33,
                         "vendor_id": 1278
-                    }
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "consumer_key_code": "eject" },
+                            "to": [{ "consumer_key_code": "play_or_pause" }]
+                        }
+                    ]
                 }
             ],
             "name": "HHKB-Internal-Off",
+            "selected": true,
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
